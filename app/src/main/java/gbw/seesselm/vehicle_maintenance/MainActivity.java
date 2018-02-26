@@ -5,40 +5,47 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
-    private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_addremove:
-                    mTextMessage.setText(R.string.title_addremove);
-                    return true;
-                case R.id.navigation_notes:
-                    mTextMessage.setText(R.string.title_notes);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem select)
+            {
+                Fragment selectfrag = null;
+                switch (select.getItemId()) {
+                    case R.id.navigation_home:
+                        selectfrag = HomeFragment.newInstance();
+                        break;
+                    case R.id.navigation_addremove:
+                        selectfrag = AddRemoveFragment.newInstance();
+                        break;
+                    case R.id.navigation_notes:
+                        selectfrag = NotesFragment.newInstance();
+                        break;
+                }
+                FragmentTransaction fragtran = getSupportFragmentManager().beginTransaction();
+                fragtran.replace(R.id.FrameLayout,selectfrag);
+                fragtran.commit();
+                return true;
+            }
+        });
+        FragmentTransaction fragtran = getSupportFragmentManager().beginTransaction();
+        fragtran.replace(R.id.FrameLayout,HomeFragment.newInstance());
+        fragtran.commit();
+
     }
 
 }
