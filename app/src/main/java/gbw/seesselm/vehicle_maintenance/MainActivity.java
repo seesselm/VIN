@@ -1,5 +1,7 @@
 package gbw.seesselm.vehicle_maintenance;
 
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,9 +10,11 @@ import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
+
+
 public class MainActivity extends AppCompatActivity
 {
-
+private SharedPreferences prefs;
 
 
     @Override

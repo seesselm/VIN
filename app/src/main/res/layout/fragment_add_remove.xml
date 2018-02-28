@@ -8,33 +8,265 @@
     tools:context="gbw.seesselm.vehicle_maintenance.AddRemoveFragment">
 
 
-    <Button
-        android:id="@+id/minus_ar"
+    <EditText
+        android:id="@+id/vin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="66dp"
-        android:text="-"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textCapCharacters"
+        android:text="Name"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/text_top" />
 
-    <Button
-        android:id="@+id/plus_ar"
+    <TextView
+        android:id="@+id/text_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="47dp"
-        android:layout_marginTop="66dp"
-        android:text="+"
+        android:layout_marginEnd="277dp"
+        android:layout_marginTop="16dp"
+        android:text="Input Vin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/output_ar"
+        android:id="@+id/vin_1"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_1"
+        app:layout_constraintTop_toBottomOf="@+id/vin" />
+
+    <TextView
+        android:id="@+id/vin_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="132dp"
-        android:text="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_2"
+        app:layout_constraintTop_toBottomOf="@+id/vin_1" />
+
+    <TextView
+        android:id="@+id/vin_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_3"
+        app:layout_constraintTop_toBottomOf="@+id/vin_2" />
+
+    <TextView
+        android:id="@+id/vin_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="21dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_4"
+        app:layout_constraintTop_toBottomOf="@+id/vin_3" />
+
+    <TextView
+        android:id="@+id/vin_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_5"
+        app:layout_constraintTop_toBottomOf="@+id/vin_4" />
+
+    <TextView
+        android:id="@+id/vin_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_6"
+        app:layout_constraintTop_toBottomOf="@+id/vin_5" />
+
+    <TextView
+        android:id="@+id/vin_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="69dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_7"
+        app:layout_constraintTop_toBottomOf="@+id/vin_6" />
+
+    <TextView
+        android:id="@+id/vin_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_8"
+        app:layout_constraintTop_toBottomOf="@+id/vin_7" />
+
+    <TextView
+        android:id="@+id/vin_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_10"
+        app:layout_constraintTop_toBottomOf="@+id/vin_8" />
+
+    <TextView
+        android:id="@+id/vin_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/out_11"
+        app:layout_constraintTop_toBottomOf="@+id/vin_10" />
+
+    <TextView
+        android:id="@+id/out_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="180dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vin" />
+
+    <TextView
+        android:id="@+id/out_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="18dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_1" />
+
+    <TextView
+        android:id="@+id/out_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_2" />
+
+    <TextView
+        android:id="@+id/out_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_3" />
+
+    <TextView
+        android:id="@+id/out_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_4" />
+
+    <TextView
+        android:id="@+id/out_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_5" />
+
+    <TextView
+        android:id="@+id/out_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="183dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_6" />
+
+    <TextView
+        android:id="@+id/out_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="14dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_7" />
+
+    <TextView
+        android:id="@+id/out_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_8" />
+
+    <TextView
+        android:id="@+id/out_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="182dp"
+        android:layout_marginTop="14dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/out_10" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="43dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_1980"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="1980-2009"
+            tools:layout_editor_absoluteX="232dp"
+            tools:layout_editor_absoluteY="79dp" />
+
+        <RadioButton
+            android:id="@+id/radio_2010"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2010-2018"
+            tools:layout_editor_absoluteX="232dp"
+            tools:layout_editor_absoluteY="47dp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="33dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
 </android.support.constraint.ConstraintLayout>
