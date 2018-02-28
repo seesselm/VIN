@@ -143,7 +143,7 @@ public class AddRemoveFragment extends Fragment
         out_10=(TextView) view.findViewById(R.id.out_10);
         out_11=(TextView) view.findViewById(R.id.out_11);
 
-        status=(TextView) view.findViewByID(R.id.status);
+        status=(TextView) view.findViewById(R.id.status);
 
         radioGroup=(RadioGroup) view.findViewById(R.id.radioGroup);
         radio_1980=(RadioButton) view.findViewById(R.id.radio_1980);
@@ -181,12 +181,26 @@ public class AddRemoveFragment extends Fragment
         super.onResume();
 
         //vin_in=saved_ar.getInt("vin_in",5);
-        DrawDisplay();
+        drawDisplay();
     }
 
-    public void DrawDisplay()
+    public void drawDisplay()
     {
-
+        switch(error)
+        {
+            case 0:
+                status.setText("All clear");
+                break;
+            case 1:
+                status.setText("Invalid length");
+                break;
+            case 2:
+                status.setText("Invalid check");
+                break;
+            case 3:
+                status.setText("DONE");
+                break;
+        }
     }
 
     @Override
@@ -229,10 +243,7 @@ public class AddRemoveFragment extends Fragment
         return false;
     }
 
-    public void drawDisplay()
-    {
 
-    }
 
 
     public void testVin()
@@ -249,12 +260,17 @@ public class AddRemoveFragment extends Fragment
             drawDisplay();
         }
     }
-//1=A,J  2=B,K,S 3=C,L,T 4=D,M,U 5=E,N,V 6=F,W 7=G,P,X 8=H,Y 9=R,Z
+
     public void checksum()
     {
         String in;
         int[] out=new int[17];
         in=vin_in.getText().toString();
+        int checkdig;
+        if(in.charAt(8)=='X')
+            checkdig=10;
+        else
+            checkdig=Character.getNumericValue(in.charAt(8));
         for(int i=0;i<in.length();i++)
         {
             switch(in.charAt(i))
@@ -282,11 +298,73 @@ public class AddRemoveFragment extends Fragment
                 case 'U':
                     out[i]=4;
                     break;
+                case '5':
+                case 'E':
+                case 'N':
+                case 'V':
+                    out[i]=5;
+                    break;
+                case '6':
+                case 'F':
+                case 'W':
+                    out[i]=6;
+                    break;
+                case '7':
+                case 'G':
+                case 'P':
+                case 'X':
+                    out[i]=7;
+                    break;
+                case '8':
+                case 'H':
+                case 'Y':
+                    out[i]=8;
+                    break;
+                case '9':
+                case 'R':
+                case 'Z':
+                    out[i]=9;
+                    break;
 
             }
+
+
+        }
+
+        int precheck=0;
+        for(int j=0;j<weight.length;j++)
+        {
+            precheck+=(weight[j]*out[j]);
+        }
+        int isvalid=precheck%11;
+        if(checkdig==isvalid)
+        {
+            VIN=vin_in.getText().toString();
+            error=3;
+            drawDisplay();
+            //decryptVin();
+        }
+        else
+        {
+            error = 2;
+            drawDisplay();
         }
 
 
+    }
+
+    public void decryptVin()
+    {
+        vin_1.setText(VIN.charAt(1));
+        vin_2.setText(VIN.charAt(2));
+        vin_3.setText(VIN.charAt(3));
+        vin_4.setText(VIN.charAt(4));
+        vin_5.setText(VIN.charAt(5));
+        vin_6.setText(VIN.charAt(6));
+        vin_7.setText(VIN.charAt(7));
+        vin_8.setText(VIN.charAt(8));
+        vin_10.setText(VIN.charAt(10));
+        vin_11.setText(VIN.charAt(11));
     }
 
 
