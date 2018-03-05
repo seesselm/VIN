@@ -7,52 +7,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import java.text.NumberFormat;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
-
 import android.view.View.OnKeyListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView.OnEditorActionListener;
-
-import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.Toast;
 
-
-import android.view.KeyEvent;
 
 
 
@@ -342,7 +309,7 @@ public class AddRemoveFragment extends Fragment
             VIN=vin_in.getText().toString();
             error=3;
             drawDisplay();
-            //decryptVin();
+            decryptVin();
         }
         else
         {
@@ -355,16 +322,16 @@ public class AddRemoveFragment extends Fragment
 
     public void decryptVin()
     {
-        vin_1.setText(VIN.charAt(1));
-        vin_2.setText(VIN.charAt(2));
-        vin_3.setText(VIN.charAt(3));
-        vin_4.setText(VIN.charAt(4));
-        vin_5.setText(VIN.charAt(5));
-        vin_6.setText(VIN.charAt(6));
-        vin_7.setText(VIN.charAt(7));
-        vin_8.setText(VIN.charAt(8));
-        vin_10.setText(VIN.charAt(10));
-        vin_11.setText(VIN.charAt(11));
+        vin_1.setText(Character.toString(VIN.charAt(0)));
+        vin_2.setText(Character.toString(VIN.charAt(1)));
+        vin_3.setText(Character.toString(VIN.charAt(2)));
+        vin_4.setText(Character.toString(VIN.charAt(3)));
+        vin_5.setText(Character.toString(VIN.charAt(4)));
+        vin_6.setText(Character.toString(VIN.charAt(5)));
+        vin_7.setText(Character.toString(VIN.charAt(6)));
+        vin_8.setText(Character.toString(VIN.charAt(7)));
+        vin_10.setText(Character.toString(VIN.charAt(9)));
+        vin_11.setText(Character.toString(VIN.charAt(11)));
     }
 
 
