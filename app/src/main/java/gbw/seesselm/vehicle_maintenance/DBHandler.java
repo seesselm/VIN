@@ -59,7 +59,6 @@ public class DBHandler extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues upVal = new ContentValues();
-        upVal.put(HEADER_CAR_NUM, num);
         upVal.put(HEADER_CAR_MAKE, make);
         upVal.put(HEADER_CAR_MODEL, model);
         upVal.put(HEADER_CAR_YEAR, year);

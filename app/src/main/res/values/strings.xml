@@ -4,6 +4,13 @@
     <string name="title_view">Display</string>
     <string name="cancel">CANCEL</string>
     <string name="add">ADD</string>
+    <string name="AddTitle">ADD</string>
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="year">Year</string>
+    <string name="VIN">VIN</string>
+    <string name="Update">Update</string>
+    <string name="id">Database ID</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

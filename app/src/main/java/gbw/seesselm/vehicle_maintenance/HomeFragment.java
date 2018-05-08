@@ -7,24 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import java.text.NumberFormat;
 import android.support.v4.app.Fragment;
 import android.database.sqlite.SQLiteDatabase;
 import android.app.DialogFragment;
-import android.content.Intent;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
-
-
-public class HomeFragment extends Fragment implements OnClickListener, Add.AddDialogListener
+public class HomeFragment extends Fragment implements OnClickListener
 {
 
 
 
-    private Button btnAdd, btnDel, btnUpdate, btnNotes, btnVin, btnAll;
+    private Button btnAdd;
+    private Button btnDel;
+    private Button btnUpdate;
+    private Button btnNotes;
+    private Button btnVin;
+    private Button btnAll;
     private String TAG = "carProj";
     SQLiteDatabase datab;
     DBHandler db;
@@ -45,9 +47,11 @@ public class HomeFragment extends Fragment implements OnClickListener, Add.AddDi
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle saved_hInstanceState) {
+                             Bundle save_hInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        db = new DBHandler(getActivity());
 
         btnAdd=view.findViewById(R.id.btnAdd);
         btnDel=view.findViewById(R.id.btnDel);
@@ -56,14 +60,66 @@ public class HomeFragment extends Fragment implements OnClickListener, Add.AddDi
         btnVin=view.findViewById(R.id.btnVin);
         btnAll=view.findViewById(R.id.btnAll);
 
+        btnAdd.setOnClickListener(this);
+        btnUpdate.setOnClickListener(this);
+        btnDel.setOnClickListener(this);
+        btnNotes.setOnClickListener(this);
+        btnVin.setOnClickListener(this);
+        btnAll.setOnClickListener(this);
 
         return view;
     }
 
-    public boolean onSaveButtonClick(DialogFragment dialog)
+    /*@Override
+    public void onSaveButtonClick(DialogFragment dialog)
     {
-        //EditText
+        EditText entryMake = (EditText) dialog.getDialog().findViewById(R.id.edtMake);
+        String make= entryMake.getText().toString();
+
+        EditText entryModel = (EditText) dialog.getDialog().findViewById(R.id.edtModel);
+        String model = entryModel.getText().toString();
+
+        EditText entryYear = (EditText) dialog.getDialog().findViewById(R.id.edtYear);
+        int year = Integer.parseInt(entryYear.getText().toString());
+
+        EditText entryVIN = (EditText) dialog.getDialog().findViewById(R.id.edtVIN);
+        String vin = entryVIN.getText().toString();
+
+        boolean chkMake = checkMake(make);
+        boolean chkModel = checkModel(model);
+        boolean chkYear = checkYear(year);
+        if(!chkMake || !chkModel || !chkYear)
+            Toast.makeText(getActivity().getApplicationContext(),"Double check information",Toast.LENGTH_LONG);
+        else
+        {
+            db.addCar(new Car(make,model,year,vin));
+            Toast.makeText(getActivity().getApplicationContext(),"Success",Toast.LENGTH_LONG);
+        }
     }
+
+    public boolean checkMake(String make)
+    {
+        if(make == "")
+            return false;
+        else
+            return true;
+    }
+
+    public boolean checkModel(String model)
+    {
+        if(model == "")
+            return false;
+        else
+            return true;
+    }
+
+    public boolean checkYear(int year)
+    {
+        if(year<0)
+            return false;
+        else
+            return true;
+    }*/
 
     @Override
     public void onCreate(Bundle saved_hInstanceState)
@@ -96,16 +152,16 @@ public class HomeFragment extends Fragment implements OnClickListener, Add.AddDi
         switch (v.getId())
         {
             case R.id.btnAdd:
-                Add dialog=new Add();
-                dialog.show(getFragmentManager(), TAG);
+                Add adddialog=new Add();
+                adddialog.show(getActivity().getFragmentManager(), TAG);
                 break;
 
             case R.id.btnDel:
-                //Do Delete
+
                 break;
 
             case R.id.btnAll:
-                //Do All
+                //getActivity().getFragmentManager()
                 break;
 
             case R.id.btnVin:
@@ -113,7 +169,9 @@ public class HomeFragment extends Fragment implements OnClickListener, Add.AddDi
                 break;
 
             case R.id.btnUpdate:
-                //Do Update
+                update updialog=new update();
+                updialog.show(getActivity().getFragmentManager(), TAG);
+                Toast.makeText(getActivity().getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.btnNotes:
