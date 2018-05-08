@@ -12,19 +12,24 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import java.text.NumberFormat;
 import android.support.v4.app.Fragment;
+import android.database.sqlite.SQLiteDatabase;
+import android.app.DialogFragment;
+import android.content.Intent;
 
 
 
 
+public class HomeFragment extends Fragment implements OnClickListener, Add.AddDialogListener
+{
 
-public class HomeFragment extends Fragment implements OnClickListener{
 
-    private TextView output_h;
-    private Button minus_h;
-    private Button plus_h;
+
+    private Button btnAdd, btnDel, btnUpdate, btnNotes, btnVin, btnAll;
+    private String TAG = "carProj";
+    SQLiteDatabase datab;
+    DBHandler db;
 
     private SharedPreferences saved_h;
-    private int outval_h = 5;
 
     public HomeFragment()
     {
@@ -44,22 +49,26 @@ public class HomeFragment extends Fragment implements OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        output_h = view.findViewById(R.id.output_h);
-        minus_h = view.findViewById(R.id.minus_h);
-        plus_h = view.findViewById(R.id.plus_h);
+        btnAdd=view.findViewById(R.id.btnAdd);
+        btnDel=view.findViewById(R.id.btnDel);
+        btnUpdate=view.findViewById(R.id.btnUpdate);
+        btnNotes=view.findViewById(R.id.btnNotes);
+        btnVin=view.findViewById(R.id.btnVin);
+        btnAll=view.findViewById(R.id.btnAll);
 
-        minus_h.setOnClickListener(this);
-        plus_h.setOnClickListener(this);
 
         return view;
     }
+
+    public boolean onSaveButtonClick(DialogFragment dialog)
+    {
+        //EditText
+    }
+
     @Override
     public void onCreate(Bundle saved_hInstanceState)
     {
         super.onCreate(saved_hInstanceState);
-
-
-
         saved_h = PreferenceManager.getDefaultSharedPreferences(getActivity());
     }
 
@@ -67,7 +76,6 @@ public class HomeFragment extends Fragment implements OnClickListener{
     public void onPause()
     {
         Editor editor = saved_h.edit();
-        editor.putInt("output_h", outval_h);
         editor.commit();
         super.onPause();
     }
@@ -75,29 +83,41 @@ public class HomeFragment extends Fragment implements OnClickListener{
     public void onResume()
     {
         super.onResume();
-
-        outval_h=saved_h.getInt("output_h",5);
         DrawDisplay();
     }
 
     public void DrawDisplay()
     {
-        NumberFormat val = NumberFormat.getIntegerInstance();
-        output_h.setText(val.format(outval_h));
+
     }
 
     public void onClick(View v)
     {
         switch (v.getId())
         {
-            case R.id.minus_h:
-                outval_h=outval_h-1;
-                DrawDisplay();
+            case R.id.btnAdd:
+                Add dialog=new Add();
+                dialog.show(getFragmentManager(), TAG);
                 break;
 
-            case R.id.plus_h:
-                outval_h=outval_h+1;
-                DrawDisplay();
+            case R.id.btnDel:
+                //Do Delete
+                break;
+
+            case R.id.btnAll:
+                //Do All
+                break;
+
+            case R.id.btnVin:
+                //Do View
+                break;
+
+            case R.id.btnUpdate:
+                //Do Update
+                break;
+
+            case R.id.btnNotes:
+                //Do notes
                 break;
         }
     }

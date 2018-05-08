@@ -9,12 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.database.sqlite.SQLiteDatabase;
+
 
 
 
 public class MainActivity extends AppCompatActivity
 {
-private SharedPreferences prefs;
+
+    private SharedPreferences prefs;
+    SQLiteDatabase datab;
+    DBHandler db;
+    private String TAG = "CarProj";
 
 
     @Override
@@ -22,6 +28,9 @@ private SharedPreferences prefs;
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = new DBHandler(this);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
         {
@@ -33,12 +42,9 @@ private SharedPreferences prefs;
                     case R.id.navigation_home:
                         selectfrag = HomeFragment.newInstance();
                         break;
-                    case R.id.navigation_addremove:
-                        selectfrag = AddRemoveFragment.newInstance();
-                        break;
-                    case R.id.navigation_notes:
-                        selectfrag = NotesFragment.newInstance();
-                        break;
+                    /*case R.id.navigation_view:
+                        selectfrag = ViewFragment.newInstance();
+                        break;*/
                 }
                 FragmentTransaction fragtran = getSupportFragmentManager().beginTransaction();
                 fragtran.replace(R.id.FrameLayout,selectfrag);
